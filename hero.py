@@ -20,10 +20,10 @@ class Hero ():
         self.stats = {
             "name" : "hero",
             "strength" : 10,
-            "health" : 100.0,
+            "health" : 70,
         }
 
-        self.inventory = ["sword", "leath potion", "rope"]
+        self.inventory = ["sword", "health potion", "rope"]
 
     def print_stats(self):
         print("Your stats are: ")
@@ -63,13 +63,24 @@ class Hero ():
         print(f"Your inventory is now{self.inventory}")
 
     def use_item(self):
-        pass
+        item_name = input (f"What item do you want to use? {self.inventory}\n").lower()
+        print (f"The item you want to use is {item_name}")
+        match item_name:
+            case "sword":
+                pass
+            case "health potion":
+                self.heal(item_name)
+
+            case "rope":
+                pass
+            case _:
+                print(f"{item_name} is not in your inventory")
 
 #---------------------------
 
 player = Hero()
 
-# print(f"Here are your Hero Stats {player.stats}")
+# print(f"Here are your Hero Stats {self.stats}")
 
 hero = Hero()
 hero.print_stats()
