@@ -1,3 +1,7 @@
+from hero import Hero
+
+player = Hero()
+player.attack()
 
 
 hero_stats = {

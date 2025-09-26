@@ -1,7 +1,7 @@
 
+from character import Character
 #Character ____ Hero
 #         |____ Enemy
-
 
 # TODO
 # Player heal
@@ -10,10 +10,10 @@
 
 
 
-class Hero ():
+class Hero (Character):
     def __init__(self):
-
-        self.max_health = 100.0
+        super().__init__() #Call the __init__ of the parent class
+        print("This is the hero class")
 
         self.health_potion_strength = 5
 
@@ -40,10 +40,9 @@ class Hero ():
     def attack(self):
         pass
 
-    def take_damage(self, damage):
+    def take_damage(self, damage): # <-- In character class
         self.stats["health"] = self.stats["health"] - damage
         print(f"Your health is now {self.stats['health']}")
-        pass
 
     def heal(self, item_name):
         
@@ -76,17 +75,19 @@ class Hero ():
             case _:
                 print(f"{item_name} is not in your inventory")
 
-#---------------------------
 
-player = Hero()
+def main():
+    print ("This is where our progam/game starts")
+    hero = Hero()
+    hero.print_stats()
+    print("\n-------------------------------")
+    hero.set_name ("ur mom")
+    hero.stats["health"] = 70
+    hero.heal("health potion")
+    print("\n-------------------------------")
+    print (f"{hero.max_health}")
+    hero.retreat()
 
-# print(f"Here are your Hero Stats {self.stats}")
 
-hero = Hero()
-hero.print_stats()
-print("\n-------------------------------")
-hero.stats["health"] = 70
-hero.heal("health potion")
-print("\n-------------------------------")
-
-player.print_stats()
+if __name__ == '__main__':
+    main()
